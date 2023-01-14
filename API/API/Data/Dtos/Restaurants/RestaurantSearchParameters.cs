@@ -2,7 +2,7 @@
 
 public class RestaurantSearchParameters
 {
-    private int _pageSize = 2;
+    private int _pageSize = 7;
 
     private const int MaxPageSize = 50;
     

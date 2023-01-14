@@ -1,0 +1,91 @@
+.App {
+  text-align: center;
+
+
+}
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./img/restaurant.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  position: fixed;
+  z-index: -1;
+}
+.pagination{
+
+  margin-bottom: 100px;
+}
+Table {
+  background-color: rgb(27, 42, 66, 0.5);
+  border-radius: 20px;
+  margin-top: 5vh;
+  width: 80vw;
+  height: 200px;
+  z-index: 10;
+  border-collapse: collapse;
+
+}
+tr
+{
+  color: aliceblue;
+  padding-top: 10px;
+}
+tr:hover {
+  background-color: rgba(27, 42, 66, 0.9);
+  transition: 0.7s;
+  border-radius: 50px;
+  
+}
+
+h1 {
+  font-style: italic;
+  color: white;
+  background-color: rgba(27, 42, 66, 0.9);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.details {
+  background-color: rgba(27, 42, 66, 0.9);
+  border-radius: 50px;
+  padding: 20px;
+}
+form {
+  padding: 20px;
+  border-radius: 10px;
+  margin: auto;
+  width: 50%;
+
+}
+
+
+
+td {
+  width: 200px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.App-header {
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+.list{
+  display: block;
+}

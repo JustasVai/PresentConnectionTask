@@ -30,18 +30,18 @@ namespace API.Controllers
         
         // api/v1/restaurants GET List 200
         //[HttpGet]
-        public async Task<IEnumerable<RestaurantDto>>GetMany()
+        public async Task<IEnumerable<RestaurantDto>>GetRestaurants()
         {
-           var restaurants = await _restaurantsRepository.GetAllAsync();
+           var restaurants = await _restaurantsRepository.GetAllRestaurantsAsync();
            return restaurants.Select(o => new RestaurantDto(o.Id,o.Name,o.Description,o.PhoneNumber,o.Rating,o.CreationDate));
         }
         
         
         // api/v1/restaurants?pageNumber=1&pageSize=5 GET List 200
         [HttpGet(Name = "GetRestaurants")]
-        public async Task<IEnumerable<RestaurantDto>>GetManyPaging([FromQuery] RestaurantSearchParameters searchParameters)
+        public async Task<IEnumerable<RestaurantDto>>GetRestaurantsPaging([FromQuery] RestaurantSearchParameters searchParameters)
         {
-            var restaurants = await _restaurantsRepository.GetAllAsync(searchParameters);
+            var restaurants = await _restaurantsRepository.GetAllRestaurantsAsync(searchParameters);
             var previousPageLink = restaurants.HasPrevious
                 ? CreateRestaurantsResourceUri(searchParameters,
                     ResourceUriType.PreviousPage)
@@ -69,9 +69,9 @@ namespace API.Controllers
         // api/v1/restaurants/{id} GET One 200
         [HttpGet]
         [Route("{restaurantId}")]
-        public async Task<ActionResult<RestaurantDto>> GetOne(int restaurantId)
+        public async Task<ActionResult<RestaurantDto>> GetRestaurant(int restaurantId)
         {
-            var restaurant = await _restaurantsRepository.GetAsync(restaurantId);
+            var restaurant = await _restaurantsRepository.GetRestaurantAsync(restaurantId);
             if (restaurant == null)
             {
                 return NotFound();
@@ -84,7 +84,7 @@ namespace API.Controllers
         public async Task<ActionResult<RestaurantDto>>Create(CreateRestaurantDto restaurantDto)
         {
             var restaurant = new Restaurant{Name = restaurantDto.Name,Description = restaurantDto.Description,PhoneNumber = restaurantDto.PhoneNumber,Rating = restaurantDto.Rating,CreationDate = DateTime.UtcNow};
-            await _restaurantsRepository.CreateAsync(restaurant);
+            await _restaurantsRepository.CreateRestaurantAsync(restaurant);
             return Created("", new RestaurantDto(restaurant.Id,restaurant.Name,restaurant.Description,restaurant.PhoneNumber,restaurant.Rating,restaurant.CreationDate));
             /*return CreatedAtAction("GetRestaurant", new { restaurantId = restaurant.Id },new RestaurantDto(restaurant.Name,restaurant.Description,restaurant.PhoneNumber,restaurant.Rating,restaurant.CreationDate));*/
         }

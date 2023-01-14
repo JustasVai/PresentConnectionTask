@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Justas\\Desktop\\JustasVai\\PresentConnectionTask\\API\\API\\API.csproj": {}
+    "C:\\Users\\Justas\\Desktop\\PresentConnectionTask\\API\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Justas\\Desktop\\JustasVai\\PresentConnectionTask\\API\\API\\API.csproj": {
+    "C:\\Users\\Justas\\Desktop\\PresentConnectionTask\\API\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Justas\\Desktop\\JustasVai\\PresentConnectionTask\\API\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Justas\\Desktop\\PresentConnectionTask\\API\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\Justas\\Desktop\\JustasVai\\PresentConnectionTask\\API\\API\\API.csproj",
+        "projectPath": "C:\\Users\\Justas\\Desktop\\PresentConnectionTask\\API\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Justas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Justas\\Desktop\\JustasVai\\PresentConnectionTask\\API\\API\\obj\\",
+        "outputPath": "C:\\Users\\Justas\\Desktop\\PresentConnectionTask\\API\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -43,6 +43,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[7.0.1, )"
