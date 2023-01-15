@@ -39,9 +39,9 @@ namespace API.Controllers
         
         // api/v1/restaurants?pageNumber=1&pageSize=5 GET List 200
         [HttpGet(Name = "GetRestaurants")]
-        public async Task<IEnumerable<RestaurantDto>>GetRestaurantsPaging([FromQuery] RestaurantSearchParameters searchParameters)
+        public async Task<IEnumerable<RestaurantDto>>GetRestaurantsPaging([FromQuery] RestaurantFilterParameters restaurantFilterParameters,[FromQuery] RestaurantSearchParameters searchParameters)
         {
-            var restaurants = await _restaurantsRepository.GetAllRestaurantsAsync(searchParameters);
+            var restaurants = await _restaurantsRepository.GetAllRestaurantsAsync(restaurantFilterParameters,searchParameters);
             var previousPageLink = restaurants.HasPrevious
                 ? CreateRestaurantsResourceUri(searchParameters,
                     ResourceUriType.PreviousPage)

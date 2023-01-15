@@ -185,7 +185,7 @@ const NewRecordForm = () => {
                         <Typography id="modal-modal-title" variant="h6" component="h2">
                             Restaurant with name "{formValues.name.value}" created successfully.
                         </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        <Typography id="modal-modal-description" sx={{ mt: 2 }} component="div">
                             <h1>Restaurant</h1>
                             <p>Name: <b>{formValues.name.value}</b></p>
                             <p>Description:<b> {formValues.description.value}</b></p>

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { format } from 'date-fns';
 const RowDetail = () => {
     const id = useLocation().state.id;
-    const [restaurant, setRestaurant] = useState();
+    const [restaurant, setRestaurant] = useState(null);
     
 
     useEffect(() => {
@@ -13,12 +13,12 @@ const RowDetail = () => {
            setRestaurant(data);
         }
         getRestaurant();
+        
         return () => {
         };
     }, [id]);
 
     const loaded = restaurant !== null;
-    console.log(loaded)
         return (
 
 

@@ -8,7 +8,7 @@ namespace API.Data.Repositories
     {
         Task<Restaurant?> GetRestaurantAsync(int restaurantId);
         Task<IReadOnlyList<Restaurant>> GetAllRestaurantsAsync();
-        Task<PagedList<Restaurant>> GetAllRestaurantsAsync(RestaurantSearchParameters restaurantSearchParameters);
+        Task<PagedList<Restaurant>> GetAllRestaurantsAsync(RestaurantFilterParameters restaurantFilterParameters,RestaurantSearchParameters restaurantSearchParameters);
         Task CreateRestaurantAsync(Restaurant restaurant);
     }
 
@@ -31,9 +31,22 @@ namespace API.Data.Repositories
             return await _restaurantDbContext.Restaurants.ToListAsync();
         }
         
-        public async Task<PagedList<Restaurant>> GetAllRestaurantsAsync(RestaurantSearchParameters restaurantSearchParameters)
+        public async Task<PagedList<Restaurant>> GetAllRestaurantsAsync(RestaurantFilterParameters restaurantFilterParameters,RestaurantSearchParameters restaurantSearchParameters)
         {
             var queryable = _restaurantDbContext.Restaurants.AsQueryable();
+            
+            if (!string.IsNullOrEmpty(restaurantFilterParameters.Name))
+            {
+                queryable = queryable.Where(x => x.Name.Contains(restaurantFilterParameters.Name));
+            }
+            if (!string.IsNullOrEmpty(restaurantFilterParameters.Description))
+            {
+                queryable = queryable.Where(x => x.Description.Contains(restaurantFilterParameters.Description));
+            }
+            if (!string.IsNullOrEmpty(restaurantFilterParameters.PhoneNumber))
+            {
+                queryable = queryable.Where(x => x.PhoneNumber.Contains(restaurantFilterParameters.PhoneNumber));
+            }
 
             return await PagedList<Restaurant>.CreateAsync(queryable, restaurantSearchParameters.PageNumber,
                 restaurantSearchParameters.PageSize);

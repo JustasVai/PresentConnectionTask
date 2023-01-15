@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState} from "react";
 import Table from "../components/Table/Table";
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import Pagination from "../components/Pagination";
 const Home = () => {
   const navigate = useNavigate();
-  const [pagination,setPagination]= useState(null);
-  const [currentPage,setCurrentPage]= useState(0);
+  const [tableData, setTableData] = useState();
+
   const handleButtonClick = ()=>{
     navigate("/restaurantCreate");
   }
@@ -18,9 +18,9 @@ const Home = () => {
     <div >
       <h1>Restaurants table</h1>
       <Button color="secondary"variant="contained" onClick={() => handleButtonClick()}>Create Restaurant</Button>
-      <Table page={currentPage} setPagination={setPagination}/>
+      <Table tableData={tableData}/>
       
-      <Pagination className="pagination" setPage={setCurrentPage} paginationData={pagination}  />
+      <Pagination className="pagination"  setTableData={setTableData}  />
     </div>
   );
 };
